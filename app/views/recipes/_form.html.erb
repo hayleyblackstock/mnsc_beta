@@ -1,0 +1,13 @@
+<%= form_for @recipe do |f| %>
+
+<%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.select(:type, [['Main', :main], ['Appetizer', :appetizer], ['Dessert', :dessert]]) %>
+
+  <%= f.label :url %>
+<%= f.text_field :url %>
+
+  <%= f.submit "Add Recipe" %>
+
+  <% end %>

@@ -1,0 +1,31 @@
+<div class="page-header">
+  <div class="container">
+<h1> <%= @user.full_name %> </h1>
+</div>
+</div>
+
+<%= image_tag(@user.profile_picture, :size => "120x120") %>
+
+<button class="btn btn-default"><%= link_to "Back", root_path %></button>
+
+<% if @user == current_user %>
+<button class="btn btn-default"> <%= link_to "Edit Information", edit_user_path(@user) %> </button>
+
+<button class="btn btn-default"><%= link_to "Delete Member", user_path(@user), :method => :delete %></button>
+<% end %>
+
+<p><strong>Phone Number:</strong> <a href="tel:<%= number_to_phone(@user.phone_number) %>" > <%= number_to_phone(@user.phone_number) %> </a></p>
+<p><strong>Address:</strong> <%= @user.address %> </p>
+<% if @user.unit != "" %>
+<p><strong>Unit:</strong> <%= @user.unit %> </p>
+<% end %>
+<p><strong>City:</strong> <%= @user.city %> </p>
+<p><strong>State:</strong> <%= @user.state %> </p>
+<p><strong>Zip Code:</strong> <%= @user.zip_code %> </p>
+<button type="btn btn-default"> <a target="_blank" href="https://www.google.com/maps/dir/Current+Location/<%= @user.directions %>"> Get Directions</a>  </button>
+<!-- <button type="btn btn-default"> <a target="_blank" href="comgooglemapsurl://www.google.com/maps/dir/Current+Location/<%= @user.directions %>"> Get Directions App</a>  </button> -->
+<% if @user.unit != "" %>
+<p><strong>Entry Code:</strong> <%= @user.entry_code %> </p>
+<% end %>
+<p><strong>Email:</strong> <a href="mailto:<%= @user.email %>"> <%= @user.email %></a> </p>
+<p><strong>Birthday:</strong> <%= @user.birthday %> </p>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MNSC (beta)</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<% if current_user %>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h1><%= link_to image_tag("/mnsc-logo.png", width: "250"), root_path %> </h1>
+      </div>
+
+      <div class="nav navbar-nav navbar-right">
+
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to 'Past Recipes', recipes_path %></li>
+          <li><%= link_to 'Members', users_path%></li>
+          <li><%= link_to(current_user.full_name, user_path(current_user)) %></li>
+          <li><%= link_to "Sign Out", logout_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</nav>
+
+<% else %>
+<h1 align="center"><%= link_to image_tag("/MNSClogo.png", width: "175"), root_path %> </h1>
+<% end %>
+</nav>
+</div>
+
+<body>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+</body>
+</html>

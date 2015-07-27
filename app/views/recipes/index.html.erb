@@ -1,0 +1,52 @@
+
+<div class="page-header">
+  <div class="container">
+<h1> Past Recipes  </h1>
+</div>
+</div>
+
+<button class="btn btn-default"><%= link_to "Add Recipe", new_recipe_path %>
+</button>
+
+<table  class="table table-hover">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        Link
+      </th>
+      <th>
+        By
+      </th>
+      <th>
+
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @recipes.each do |recipe| %>
+      <td>
+        <%= recipe.name%>
+      </td>
+      <td>
+        <%= recipe.type %>
+      </td>
+      <td> <a href="<%= recipe.url %>" >
+        <%= recipe.url %> </a>
+      </td>
+      <td>
+        <%= recipe.user.full_name %>
+      </td>
+      <td>
+        <button class="glyphicon glyphicon-remove" aria-hidden="true" aria-label="delete"> <%= link_to "", recipes_path(recipe), :method => :delete  %> </button>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

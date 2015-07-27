@@ -1,0 +1,27 @@
+
+<div class="weather icon"><p><h2> Upcoming Club's Weather Forecast:</p> </div>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Schedule</h2>
+
+<iframe width="100%" height=1000px frameborder='0' src="https://docs.google.com/spreadsheets/d/1wz4SQDZhbfXxracD-ZeZiFk18TmU3UlTQphnYndCqn0/pubhtml?single=true&gid=0&amp&range=a1:e59&widget=false&chrome=false">
+</iframe>
+</div>
+
+  <div class="col-xs-6">
+      <h2>Members</h2>
+<ul class="photo-grid">
+  <% @users.order('last_name').each do |user| %>
+	<li>
+    <a href="/users/<%= user.id %>" >
+			<figure>
+        <%= image_tag(user.profile_picture) %>
+				<figcaption><p> <%=  user.full_name %></p></figcaption>
+			</figure>
+    </a>
+	</li>
+  <% end %>
+</ul>
+</div>
+</div>
