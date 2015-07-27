@@ -15,7 +15,7 @@ helper_method :current_user
 def authenticate
   if not current_user
     session[:previous_url] = request.fullpath
-    redirect_to login_path, alert: 'Not signed in!'
+    redirect_to signup_path, alert: 'Not signed in!'
   end
 end
 
